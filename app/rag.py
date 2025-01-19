@@ -108,14 +108,20 @@ class RAGProcessor:
         """
         Enhanced RAG query with detailed explanation of the retrieval process.
         """
+        # Initialize retrieval_details at the start
+        retrieval_details = {
+            "steps": [],
+            "chunks": [],
+            "scores": [],
+            "metadata_used": False
+        }
+        
         try:
+            # Step 1: Initialize Vector DB
             collection = self.vector_db_instance.initialize_vectorDB()
-            retrieval_details = {
-                "steps": [],
-                "chunks": [],
-                "scores": [],
-                "metadata_used": False
-            }
+            if not collection:
+                retrieval_details["error"] = "Failed to initialize vector database"
+                return "Unable to access the database.", retrieval_details
             
             # Step 1: Query Analysis
             retrieval_details["steps"].append("Analyzing query type")
@@ -131,6 +137,10 @@ class RAGProcessor:
             retrieval_details["steps"].append("Performing semantic search")
             n_results = N_CHUNKS * (2 if metadata_query else 1)
             results = self.semantic_search(collection, query, n_results)
+            
+            if not results or not results.get('documents') or not results['documents'][0]:
+                retrieval_details["error"] = "No results found in semantic search"
+                return "No relevant information found.", retrieval_details
 
             # Step 4: Context Filtering
             retrieval_details["steps"].append("Filtering relevant contexts")
@@ -148,7 +158,7 @@ class RAGProcessor:
             retrieval_details["scores"] = valid_scores
 
             if not valid_contexts:
-                return "Data Not Available", retrieval_details
+                return "No data met the confidence threshold.", retrieval_details
 
             # Step 5: Context Combination
             retrieval_details["steps"].append("Combining contexts and generating response")
@@ -182,7 +192,8 @@ class RAGProcessor:
         except Exception as e:
             error_message = f"Error during RAG query process: {str(e)}"
             retrieval_details["error"] = error_message
-            print(error_message) 
+            retrieval_details["steps"].append("Error occurred during processing")
+            print(error_message)
             return "An error occurred while processing your query.", retrieval_details
 
     
