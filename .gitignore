@@ -170,6 +170,8 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
+*.csv
+
 .codegpt
 chroma_db
 uploaded_docs
@@ -179,3 +181,5 @@ docker-compose.yaml
 .ipynb
 .flag
 trash/
+virtualenv/
+*.csv
