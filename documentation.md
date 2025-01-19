@@ -1,6 +1,6 @@
 # **Project Documentation for NYC Property Query System**
 
-This project utilizes a **Retrieval-Augmented Generation (RAG)** pipeline to process and query NYC property records. The system allows users to upload documents, retrieve relevant information using semantic search, and generate answers through a language model. Below is an overview of the components, setup instructions, and functionality of the system.
+This project utilizes a **Retrieval-Augmented Generation (RAG)** pipeline to process and query NYC property records. The system allows users to ingest documents, retrieve relevant information using semantic search, and generate answers through a language model. Below is an overview of the components, setup instructions, and functionality of the system.
 
 ![Chatbot](img/img1.png)
 
@@ -10,18 +10,7 @@ This project utilizes a **Retrieval-Augmented Generation (RAG)** pipeline to pro
 
 ### 1.1 **Environment Configuration**
 
-Before you run the project, ensure the environment variables are properly set in a `.env` file. Here's an example:
-
-```env
-VECTOR_STORE="./chroma_db"
-DATA_DIR = "data/NYCDB-ACRIS/"
-METADATA_DIR = "data/metadata/"
-FILE_PATH="./uploaded_docs"
-JSON_PATH="./qa_history.json"
-EMBED_MODEL="all-MiniLM-L6-v2"
-MODEL="mixtral-8x7b-32768"
-GROQ_API_KEY='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'
-```
+Before you run the project, ensure the environment variables are properly set in a `.env` file. 
 
 ### 1.2 **Setting up the Database (`setupDB.py`)**
 
@@ -50,11 +39,6 @@ This script is responsible for setting up the **ChromaDB** vector store and mana
 
 - **Persistent Client**: Ensures a ChromaDB collection is created or retrieved and is reusable across multiple sessions.
 - **Embedding Model**: Utilizes the `all-MiniLM-L6-v2` embedding model for efficient text-to-vector conversion.
-
-### Main Functionality:
-
-- **initialize_vectorDB**: Creates or retrieves the ChromaDB collection, `documents_collection`.
-- **Embedding Function**: Uses SentenceTransformer for embedding document text for future retrieval.
 
 ---
 
