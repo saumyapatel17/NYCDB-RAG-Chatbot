@@ -176,7 +176,6 @@ uploaded_docs
 install-poetry.py
 Dockerfile
 docker-compose.yaml
-requirements.txt
 .ipynb
 .flag
 trash/
