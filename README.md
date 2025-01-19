@@ -14,6 +14,19 @@ The **NYCDB RAG chatbot** is a Retrieval-Augmented Generation (RAG)-based applic
 
 ---
 
+### Adding Data Files
+
+1. **Add ACRIS CSV Files**  
+   Download the required CSV files from the [NYCDB repository](https://github.com/nycdb/nycdb) and place them in the following directory:
+   ```
+   data/NYCDB-ACRIS/
+   ```
+2. **Add Metadata CSV Files**  
+   Download the metadata CSV files from [this Google Sheet](https://docs.google.com/spreadsheets/d/10cMRKvH7xD__V0wNM9aDa9lguwCB8XlcTHS9bj9uyCU/edit?usp=sharing) and place them in the following directory:
+   ```
+   data/metadata/
+   ```
+
 ## Installation
 
 1. Clone the repository:
@@ -29,8 +42,7 @@ The **NYCDB RAG chatbot** is a Retrieval-Augmented Generation (RAG)-based applic
 3. Install dependencies:
    ```bash
    pip install -r requirements.txt
-   ```
-
+   ```   
 4. Set up the database with CSV files and metadata:
    ```bash
    python setupDB.py

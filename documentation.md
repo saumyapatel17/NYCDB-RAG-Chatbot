@@ -2,7 +2,7 @@
 
 This project utilizes a **Retrieval-Augmented Generation (RAG)** pipeline to process and query NYC property records. The system allows users to upload documents, retrieve relevant information using semantic search, and generate answers through a language model. Below is an overview of the components, setup instructions, and functionality of the system.
 
-![Chatbot](img/Screenshot 2025-01-18 132043.png)
+![Chatbot](img/img1.png)
 
 ---
 
@@ -175,7 +175,7 @@ This file defines constants used throughout the system for controlling the RAG p
 - **N_CHUNKS**: Number of similar chunks retrieved during semantic search.
 - **CONFIDENCE_THRESHOLD**: Filters results based on similarity scores.
 
-![Chatbot with messages](img/Screenshot 2025-01-18 132010.png)
+![Chatbot with messages](img/img2.png)
 
 ---
 
